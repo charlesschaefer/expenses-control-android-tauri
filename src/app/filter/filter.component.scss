@@ -1,0 +1,31 @@
+#budget-filter > mat-card {
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #f9f8f8;
+}
+
+#budget-filter-card {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+.budget-filter-interval { grid-area: 1 / 1 / 2 / 2; }
+.budget-filter-type { grid-area: 1 / 2 / 2 / 3; }
+.budget-filter-category { grid-area: 1 / 3 / 2 / 4; }
+.budget-filter-account { grid-area: 1 / 4 / 2 / 5; }
+.budget-filter-button { grid-area: 1 / 5 / 2 / 6; }
+
+.filter-title {
+    font-weight: bold;
+}
+
+.filter-type {
+    padding-right: 20px;
+}
+
+#budget-filter-type .filter-title {
+    padding-left: 10px;
+}

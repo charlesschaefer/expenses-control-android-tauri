@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>
+  Nova 
+  @if (type == DialogTypeAccount) {
+    <span>Conta</span>
+  } @else {
+    <span>Categoria</span>
+  }
+</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>
+      Nome da 
+      @if (type == DialogTypeAccount) {
+        <span>Conta</span>
+      } @else {
+        <span>Categoria</span>
+      }
+    </mat-label>
+    <input matInput [(ngModel)]="item" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="item()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

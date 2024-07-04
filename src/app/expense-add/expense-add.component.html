@@ -1,0 +1,62 @@
+<h2>Adicionar nova transação</h2>
+<form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+    <mat-card class="expense-add-form">
+        <div class="category">
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="category" >
+                    @for (category of categories; track category.name) {
+                        <mat-option [value]="category.id">{{category.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button mat-mini-fab class="add-new" (click)="openNewDialog(DialogTypeCategory)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="account">
+            <mat-form-field>
+                <mat-label>Conta</mat-label>
+                <mat-select formControlName="account">
+                    @for (account of accounts; track account.name) {
+                        <mat-option [value]="account.id">{{account.name}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button mat-mini-fab class="add-new" (click)="openNewDialog(DialogTypeAccount)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="type">
+            <mat-label>Tipo da transação:</mat-label>
+            <br />
+            <mat-radio-group formControlName="type">
+                <mat-radio-button value="C">Crédito</mat-radio-button>
+                <mat-radio-button value="D">Débito</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="date">
+            <mat-form-field class="example-full-width">
+                <mat-label>Data da transação</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="value">
+            <mat-form-field>
+                <mat-label>Valor da transação</mat-label>
+                <input matInput currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="value" formControlName="value" />
+            </mat-form-field>
+        </div>
+        @if (this.id) {
+            <input type="hidden" name="id" formControlName="id" />
+        }
+        <div class="submit">
+            <button mat-flat-button>Adicionar</button>
+        </div>
+    </mat-card>
+</form>

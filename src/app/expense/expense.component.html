@@ -1,0 +1,22 @@
+<section id="expense">
+    <mat-card>
+        <!-- <h2>
+            Lançamentos Financeiros
+            <span>
+                <a routerLink="/expense-add" routerLinkActive="active" ariaCurrentWhenActive="page" mat-fab aria-label="Example icon button with a delete icon">
+                    <mat-icon>add</mat-icon>
+                </a>
+            </span>
+        </h2> -->
+
+        <div id="expense-internal">
+            <!--<filter (changeFilter)="onChangeFilter($event)"></filter> -->
+            <filter [filter]="this.filter" (filterChanged)="filterChanged($any($event))"></filter>
+            <expense-table [filter]="this.filter">
+
+            </expense-table>
+        </div>
+    </mat-card>
+</section>
+<!-- <h2>Filter: </h2>
+<pre><code [innerHTML]="filter|json"></code></pre> -->

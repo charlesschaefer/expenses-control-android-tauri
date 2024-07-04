@@ -1,0 +1,25 @@
+.expense-add-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 15px;
+}
+
+.category { grid-area: 1 / 2 / 2 / 3; }
+.account { grid-area: 2 / 2 / 3 / 3; }
+.type { grid-area: 3 / 2 / 4 / 3; }
+.date { grid-area: 4 / 2 / 5 / 3; }
+.value { grid-area: 5 / 2 / 6 / 3; }
+.submit { grid-area: 6 / 2 / 7 / 3; }
+
+h2 {
+    text-align: center;
+}
+mat-card {
+    text-align: center;
+}
+
+.add-new {
+    margin-left:10px;
+}

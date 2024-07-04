@@ -1,0 +1,71 @@
+<section id="budget-filter">
+    <mat-card>
+        <div id="budget-filter-card">
+            <div class="budget-filter-interval">
+                <div class="filter-title">
+                    <span>Período</span>
+                </div>
+                <div class="filter-body">
+                    <mat-form-field>
+                        <mat-label>Insira um período</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate name="startDate" [(ngModel)]="filter.startDate" placeholder="Data inicial" #filter.startDate>
+                            <input matEndDate name="endDate" [(ngModel)]="filter.endDate" placeholder="Data final">
+                        </mat-date-range-input>
+                        
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="budget-filter-type">
+                <div class="filter-title">Tipo</div>
+                <div class="filter-body">
+                    <form>
+                        <label for="type-credit" class="filter-type">
+                            <mat-checkbox name="type_credit" [(ngModel)]="filter.type_credit.checked" id="type-credit" value="filter.type_credit.code" />
+                            <span>{{ filter.type_credit.name }}</span>
+                        </label>
+                        <label for="type-debit">
+                            <mat-checkbox name="type_debit" [(ngModel)]="filter.type_debit.checked" id="type-debit" value="filter.type_debit.code" />
+                            <span>{{ filter.type_debit.name }}</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div class="budget-filter-category">
+                <div class="filter-title">Categoria</div>
+                <div class="filter-body">
+                    <mat-form-field>
+                        <mat-select name="category" [(ngModel)]="filter.category">
+                            <mat-option>Limpar</mat-option>
+                            @for (category of categories; track category.name) {
+                                <mat-option [value]="category.id">{{category.name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="budget-filter-account">
+                <div class="filter-title">Conta</div>
+                <div class="filter-body">
+                    <mat-form-field>
+                        <mat-select name="account" [(ngModel)]="filter.account">
+                            <mat-option>Limpar</mat-option>
+                            @for (account of accounts; track account.name) {
+                                <mat-option [value]="account.id">{{account.name}}</mat-option>
+                            }
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="budget-filter-button">
+                <button mat-fab class="add-new" extended (click)="ngFilterChanged()">
+                    <mat-icon>search</mat-icon>Filtrar
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</section>
+<!-- <h2>Filter: </h2>
+<pre><code [innerHTML]="filter|json"></code></pre> -->

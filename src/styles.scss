@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#expense-table mat-chip.chip-credit {
+    background-color: #295FEA;
+}
+ 
+#expense-table mat-chip.chip-debit {
+    background-color: #EE7171;
+}
+  
+#expense-table .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+    color: white;
+}
