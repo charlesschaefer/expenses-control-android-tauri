@@ -4,7 +4,7 @@
         <div class="category">
             <mat-form-field>
                 <mat-label>Categoria</mat-label>
-                <mat-select formControlName="category" >
+                <mat-select formControlName="category" [(value)]="currentCategory">
                     @for (category of categories; track category.name) {
                         <mat-option [value]="category.id">{{category.name}}</mat-option>
                     }
@@ -17,7 +17,7 @@
         <div class="account">
             <mat-form-field>
                 <mat-label>Conta</mat-label>
-                <mat-select formControlName="account">
+                <mat-select formControlName="account" [(value)]="currentAccount">
                     @for (account of accounts; track account.name) {
                         <mat-option [value]="account.id">{{account.name}}</mat-option>
                     }

@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>
   Nova 
-  @if (type == DialogTypeAccount) {
+  @if (data.type == DialogTypeAccount) {
     <span>Conta</span>
   } @else {
     <span>Categoria</span>
@@ -10,16 +10,16 @@
   <mat-form-field>
     <mat-label>
       Nome da 
-      @if (type == DialogTypeAccount) {
+      @if (data.type == DialogTypeAccount) {
         <span>Conta</span>
       } @else {
         <span>Categoria</span>
       }
     </mat-label>
-    <input matInput [(ngModel)]="item" />
+    <input matInput [(ngModel)]="name" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button [mat-dialog-close]="item()" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="clearOnClose()" >Cancelar</button>
+  <button mat-button [mat-dialog-close]="name()">Ok</button>
 </mat-dialog-actions>

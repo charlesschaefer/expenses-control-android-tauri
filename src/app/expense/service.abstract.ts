@@ -56,6 +56,10 @@ export abstract class ServiceAbstract<T> {
         this.useCache = false;
     }
 
+    activateCache(): void {
+        this.useCache = true;
+    }
+
     clearCache(): void {
         this.cache = new BehaviorSubject<T[]>([]);
     }

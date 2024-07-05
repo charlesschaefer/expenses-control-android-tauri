@@ -8,3 +8,5 @@ export interface ExpenseDto {
     value: number;
     date: Date | string;
 }
+
+export type ExpenseAddDto = Omit<ExpenseDto, "id">;
