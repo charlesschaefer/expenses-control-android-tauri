@@ -1,22 +1,21 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MatTableModule, MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
-import { CurrencyPipe, DatePipe } from '@angular/common';
-import { ExpenseDto } from '../expense/dto/expense.dto';
-import { ExpenseService } from '../expense/expense.service';
-import { MatTab } from '@angular/material/tabs';
-import { CategoryService } from '../expense/category.service';
-import { CategoryDto } from '../expense/dto/category.dto';
-import { CommonModule } from '@angular/common';
 import { MatChip } from '@angular/material/chips';
-import { AccountService } from '../expense/account.service';
-import { AccountDto } from '../expense/dto/account.dto';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { ExpenseTypeEnum, Filter } from '../filter/filter.component';
+
+import { ExpenseDto } from '../expense/dto/expense.dto';
+import { ExpenseService } from '../expense/expense.service';
+import { CategoryService } from '../expense/category.service';
+import { CategoryDto } from '../expense/dto/category.dto';
+import { AccountService } from '../expense/account.service';
+import { AccountDto } from '../expense/dto/account.dto';
+import { Filter } from '../filter/filter.component';
 
 
 type IndexedValue = { [key: number]: string };
