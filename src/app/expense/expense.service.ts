@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
-import { ExpenseDto } from "./dto/expense.dto";
+import { formatDate } from "@angular/common";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, Subject, catchError, map, throwError } from "rxjs";
-import { ExpenseAddDto } from "./dto/expense-add.dto";
-import { ExpenseEditDto } from "./dto/expense-edit.dto";
-import { Filter } from "../filter/filter.component";
 import { DateTime } from "luxon";
-import { formatDate } from "@angular/common";
 import { NgxIndexedDBService } from 'ngx-indexed-db';
+
+import { ExpenseDto, ExpenseAddDto } from "./dto/expense.dto";
+import { Filter } from "../filter/filter.component";
 import { ServiceAbstract } from "./service.abstract";
 
 @Injectable({ providedIn: 'root' })
@@ -17,10 +16,10 @@ export class ExpenseService<T> extends ServiceAbstract<T> {
     listFiltered(filter: Filter): Observable<T[]> {
         let dbCursor;
         switch (true) {
-            case filter.account != 0: 
+            case filter.account != undefined && filter.account != 0: 
                 dbCursor = this.dbService.openCursorByIndex(this.storeName, 'account', IDBKeyRange.only(filter.account));
                 break;
-            case filter.category != 0:
+            case filter.category != undefined && filter.category != 0:
                 dbCursor = this.dbService.openCursorByIndex(this.storeName, 'category', IDBKeyRange.only(filter.category));
                 break;
             case filter.type_credit.checked != false:
@@ -30,7 +29,9 @@ export class ExpenseService<T> extends ServiceAbstract<T> {
                 dbCursor = this.dbService.openCursorByIndex(this.storeName, 'type', IDBKeyRange.only('D'));
                 break;
             case filter.startDate != null && filter.endDate != null:
-                dbCursor = this.dbService.openCursorByIndex(this.storeName, 'date', IDBKeyRange.bound(filter.startDate.toJSDate(), filter.endDate.toJSDate()));
+                let range = IDBKeyRange.bound(filter.startDate.toJSDate(), filter.endDate.toJSDate());
+                console.log(range);
+                dbCursor = this.dbService.openCursorByIndex(this.storeName, 'date', range);
                 break;
             default:
                 dbCursor = this.dbService.openCursor(this.storeName);
